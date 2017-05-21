@@ -1,0 +1,182 @@
+# 基本は github.com のレポジトリーを指定するだけ
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# git clone 後、実行すべきコマンドがある場合はこんな感じ
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+
+[[plugins]] # カラースキーマ
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+  set background=dark
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  " 不可視ファイルを表示する
+  let NERDTreeShowHidden = 1
+
+  " ツリーと編集領域を移動する
+  nmap <Leader><Tab> <C-w>w
+'''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+" ファイルが指定されていなければNERD treeを有効にする
+if argc() == 0
+  let g:nerdtree_tabs_open_on_console_startup = 1
+end
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+    " Powerline系フォントを利用する
+    let g:airline_powerline_fonts = 1
+
+    " タブバーのカスタマイズを有効にする
+    let g:airline#extensions#tabline#enabled = 1
+
+    " タブバーの右領域を非表示にする
+    let g:airline#extensions#tabline#show_splits = 0
+    let g:airline#extensions#tabline#show_tab_type = 0
+    let g:airline#extensions#tabline#show_close_button = 0
+'''
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+    " One Darkを有効にするために必要
+    let g:onedark_termcolors=16
+
+    " カラースキーマを宣言する
+    colorscheme onedark
+'''
+
+#[[plugins]]
+#repo = 'joshdick/airline-onedark.vim'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = '''
+    " ファイル保存時に余分なスペースを削除する
+    autocmd BufWritePre * :FixWhitespace
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+    " 検索モードを開く
+    nmap <Leader>f :CtrlP<CR>
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+    " エディタの分割方向を設定する
+    set splitbelow
+    set splitright
+'''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = '''
+    " コメントの追加・削除を行なう
+    nmap <Leader>/ <Plug>(caw:zeropos:toggle)
+    vmap <Leader>/ <Plug>(caw:zeropos:toggle)
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+    " カーソル下のURLや単語をブラウザで開く
+    nmap <Leader>b <Plug>(openbrowser-smart-search)
+    vmap <Leader>b <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+hook_add = '''
+    " j/kによる移動を速くする
+    nmap j <Plug>(accelerated_jk_gj)
+    nmap k <Plug>(accelerated_jk_gk)
+'''
+
+[[plugins]]
+repo = 'edkolev/tmuxline.vim'
+#hook_add = '''
+#    " カラースキーマを生成する
+#    :TmuxlineSnapshot! ~/.dotfiles/tmuxline.conf
+#'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+    " ブランチ情報を表示する
+    let g:airline#extensions#branch#enabled = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+hook_add = '''
+    " 自動補完機能を有効にする
+    let g:neocomplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+
+
+
+
+
+
+
+
+# ブランチやタグを指定したいとき
+[[plugins]]
+repo = 'delphinus35/typescript-vim'
+rev  = 'colorize-template-strings'
+
+# 特定の条件で読み込みたいとき
+[[plugins]]
+repo = 'elzr/vim-json'
+if   = '''! has('kaoriya')'''
+
+# 依存関係を指定したいとき
+[[plugins]]
+repo    = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+
+# 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
