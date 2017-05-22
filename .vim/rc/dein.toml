@@ -22,6 +22,7 @@ hook_post_update = '''
 [[plugins]] # カラースキーマ
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
+  colorscheme hybrid
   set background=dark
 '''
 
@@ -33,6 +34,14 @@ hook_add = '''
 
   " ツリーと編集領域を移動する
   nmap <Leader><Tab> <C-w>w
+
+  " タブ移動
+  nnoremap <C-n> gt
+
+  " タブ移動
+  nnoremap <C-p> gT
+
+  let NERDTreeWinSize=26
 '''
 
 [[plugins]]
@@ -75,15 +84,19 @@ hook_add = '''
     colorscheme onedark
 '''
 
-#[[plugins]]
-#repo = 'joshdick/airline-onedark.vim'
+[[plugins]]
+repo = 'KriiV/airline-onedark.vim'
+hook_add = '''
+    let g:airline_theme='onedark'
+'''
+
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
-hook_add = '''
-    " ファイル保存時に余分なスペースを削除する
-    autocmd BufWritePre * :FixWhitespace
-'''
+#hook_add = '''
+#    " ファイル保存時に余分なスペースを削除する
+#    autocmd BufWritePre * :FixWhitespace
+#'''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'

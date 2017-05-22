@@ -4,6 +4,7 @@ set showmatch
 syntax enable 
 set tabstop=4 
 set smartindent 
+map <C-n> :NERDTreeToggle<CR>
 
 " vimrc に以下のように追記
 
