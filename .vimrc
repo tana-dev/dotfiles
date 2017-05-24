@@ -1,11 +1,3 @@
-set number 
-set title 
-set showmatch 
-syntax enable 
-set tabstop=4 
-set smartindent 
-map <C-n> :NERDTreeToggle<CR>
-
 " vimrc に以下のように追記
 
 " プラグインが実際にインストールされるディレクトリ
@@ -44,3 +36,16 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+"" php構文チェック
+autocmd FileType php set makeprg=php\ -l\ %
+autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+
+set number
+set title
+set showmatch
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smartindent
+syntax on

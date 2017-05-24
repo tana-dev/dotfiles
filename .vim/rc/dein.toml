@@ -1,9 +1,7 @@
-# 基本は github.com のレポジトリーを指定するだけ
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# git clone 後、実行すべきコマンドがある場合はこんな感じ
-[[plugins]]
+[[plugins]] # git clone 後、実行すべきコマンドがある場合はこんな感じ
 repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
   if dein#util#_is_windows()
@@ -18,7 +16,6 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
-
 [[plugins]] # カラースキーマ
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
@@ -32,14 +29,17 @@ hook_add = '''
   " 不可視ファイルを表示する
   let NERDTreeShowHidden = 1
 
+  " ツリー表示
+  map <C-n> :NERDTreeToggle<CR>
+
   " ツリーと編集領域を移動する
   nmap <Leader><Tab> <C-w>w
 
   " タブ移動
-  nnoremap <C-n> gt
+  nnoremap <C-g> gt
 
   " タブ移動
-  nnoremap <C-p> gT
+  nnoremap <C-t> gT
 
   let NERDTreeWinSize=26
 '''
@@ -47,10 +47,10 @@ hook_add = '''
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
 hook_add = '''
-" ファイルが指定されていなければNERD treeを有効にする
-if argc() == 0
-  let g:nerdtree_tabs_open_on_console_startup = 1
-end
+  " ファイルが指定されていなければNERD treeを有効にする
+  if argc() == 0
+    let g:nerdtree_tabs_open_on_console_startup = 1
+  end
 '''
 
 [[plugins]]
@@ -84,11 +84,11 @@ hook_add = '''
     colorscheme onedark
 '''
 
-[[plugins]]
-repo = 'KriiV/airline-onedark.vim'
-hook_add = '''
-    let g:airline_theme='onedark'
-'''
+#[[plugins]]
+#repo = 'KriiV/airline-onedark.vim'
+#hook_add = '''
+#    let g:airline_theme='onedark'
+#'''
 
 
 [[plugins]]
@@ -107,6 +107,9 @@ hook_add = '''
     " 検索モードを開く
     nmap <Leader>f :CtrlP<CR>
 '''
+
+[[plugins]] #検索
+repo = 'thinca/vim-visualstar'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -156,9 +159,81 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
+insert = 1
 hook_add = '''
     " 自動補完機能を有効にする
+    "let g:neocomplete#enable_at_startup = 1
+
+    "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplete.
     let g:neocomplete#enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplete#enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+    " Define dictionary.
+    let g:neocomplete#sources#dictionary#dictionaries = {
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
+
+    " Define keyword.
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplete#undo_completion()
+    inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+      " For no inserting <CR> key.
+      "return pumvisible() ? "\<C-y>" : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " Close popup by <Space>.
+    "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+    " AutoComplPop like behavior.
+    "let g:neocomplete#enable_auto_select = 1
+
+    " Shell like behavior(not recommended).
+    "set completeopt+=longest
+    "let g:neocomplete#enable_auto_select = 1
+    "let g:neocomplete#disable_auto_complete = 1
+    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+    " Enable omni completion.
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+    " For perlomni.vim setting.
+    " https://github.com/c9s/perlomni.vim
+    let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 '''
 
 [[plugins]]
@@ -167,29 +242,33 @@ repo = 'Shougo/neosnippet.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
+[[plugins]] # コメントアウト
+repo = 'tomtom/tcomment_vim'
 
 
-
-
-
-
-
-
+########################################################
+### memo
+########################################################
+### 基本は github.com のレポジトリーを指定するだけ
+#[[plugins]]
+#repo = 'Shougo/dein.vim'
+#
 # ブランチやタグを指定したいとき
-[[plugins]]
-repo = 'delphinus35/typescript-vim'
-rev  = 'colorize-template-strings'
-
-# 特定の条件で読み込みたいとき
-[[plugins]]
-repo = 'elzr/vim-json'
-if   = '''! has('kaoriya')'''
-
-# 依存関係を指定したいとき
-[[plugins]]
-repo    = 'vim-airline/vim-airline'
-depends = ['vim-airline-themes']
-
-# 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+#[[plugins]]
+#repo = 'delphinus35/typescript-vim'
+#rev  = 'colorize-template-strings'
+#
+## 特定の条件で読み込みたいとき
+#[[plugins]]
+#repo = 'elzr/vim-json'
+#if   = '''! has('kaoriya')'''
+#
+## 依存関係を指定したいとき
+#[[plugins]]
+#repo    = 'vim-airline/vim-airline'
+#depends = ['vim-airline-themes']
+#
+## 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
+#[[plugins]]
+#repo = 'vim-airline/vim-airline-themes'
+#
