@@ -23,7 +23,7 @@ hook_add = '''
   set background=dark
 '''
 
-[[plugins]]
+[[plugins]] # ツリー表示機能
 repo = 'scrooloose/nerdtree'
 hook_add = '''
   " 不可視ファイルを表示する
@@ -44,7 +44,7 @@ hook_add = '''
   let NERDTreeWinSize=26
 '''
 
-[[plugins]]
+[[plugins]] # タブページ使用時に使いやすくする
 repo = 'jistr/vim-nerdtree-tabs'
 hook_add = '''
   " ファイルが指定されていなければNERD treeを有効にする
@@ -61,54 +61,52 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
 hook_add = '''
-    " Powerline系フォントを利用する
-    let g:airline_powerline_fonts = 1
-
-    " タブバーのカスタマイズを有効にする
+    set laststatus=2
+    set showtabline=2 " 常にタブラインを表示
+    set t_Co=256 " この設定がないと色が正しく表示されない
     let g:airline#extensions#tabline#enabled = 1
-
-    " タブバーの右領域を非表示にする
-    let g:airline#extensions#tabline#show_splits = 0
-    let g:airline#extensions#tabline#show_tab_type = 0
-    let g:airline#extensions#tabline#show_close_button = 0
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline_theme='papercolor'  "落ち着いた色調が好き
+    "let g:airline_powerline_fonts = 1 " Powerline系フォントを利用する
 '''
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'geoffharcourt/one-dark.vim'
 hook_add = '''
-    " One Darkを有効にするために必要
-    let g:onedark_termcolors=16
-
-    " カラースキーマを宣言する
-    colorscheme onedark
+    let g:airline_theme='onedark'
 '''
 
-#[[plugins]]
-#repo = 'KriiV/airline-onedark.vim'
-#hook_add = '''
-#    let g:airline_theme='onedark'
-#'''
-
-
 [[plugins]]
+repo = 'rakr/vim-one'
+hook_add = '''
+    set background=light        " for the light version
+    let g:one_allow_italics = 1 " I love italic for comments
+    colorscheme one
+'''
+
+[[plugins]] # 末尾スペースをハイライト
 repo = 'bronson/vim-trailing-whitespace'
 #hook_add = '''
 #    " ファイル保存時に余分なスペースを削除する
 #    autocmd BufWritePre * :FixWhitespace
 #'''
 
-[[plugins]]
+[[plugins]] # インデントの深さを視覚的に分かりやすく
 repo = 'Yggdroot/indentLine'
 
-[[plugins]]
+[[plugins]] # ファイル検索機能
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
     " 検索モードを開く
     nmap <Leader>f :CtrlP<CR>
 '''
 
-[[plugins]] #検索
+[[plugins]] # 検索
 repo = 'thinca/vim-visualstar'
 
 [[plugins]]
@@ -244,6 +242,15 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]] # コメントアウト
 repo = 'tomtom/tcomment_vim'
+
+[[plugins]] # カラースキーマを適応しても透明にする
+repo = 'miyakogi/seiya.vim'
+hook_add = '''
+  let g:seiya_auto_enable=1
+'''
+
+[[plugins]] # ログをカラー出力
+repo = 'vim-scripts/ansiesc.vim'
 
 
 ########################################################

@@ -41,11 +41,21 @@ endif
 autocmd FileType php set makeprg=php\ -l\ %
 autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
 
+"" カレント行ハイライト
+set cursorline
+highlight CursorLine cterm=None ctermbg=Black ctermfg=None
+
+set smartcase
+set wildmenu
 set number
 set title
 set showmatch
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set statusline=2
 set smartindent
+set noswapfile
+set hlsearch
+set incsearch
 syntax on
