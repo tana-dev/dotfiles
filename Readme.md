@@ -5,6 +5,3 @@ $ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
 
 $ sh installer.sh ~/.vim/bundle
 
-
-# test
-aa
