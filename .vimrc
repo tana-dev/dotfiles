@@ -41,13 +41,35 @@ endif
 autocmd FileType php set makeprg=php\ -l\ %
 autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
 
-"" カレント行ハイライト
-set cursorline
-highlight CursorLine cterm=None ctermbg=Black ctermfg=None
-
+"" 検索に関すること
+set ignorecase
 set smartcase
-set wildmenu
+set incsearch
+set hlsearch
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+"" number
 set number
+function Setnumber()
+  if &number
+    setlocal nonumber
+  else
+    setlocal number
+  endif
+endfunction
+nnoremap <silent> <C-m> :call Setnumber()<CR>
+
+" netrwは常にtree view
+let g:netrw_liststyle = 3
+
+" タブ移動
+nnoremap <C-g> gt
+
+" タブ移動
+nnoremap <C-t> gT
+
+set nowrap
+set wildmenu
 set title
 set showmatch
 set expandtab
@@ -56,6 +78,4 @@ set shiftwidth=4
 set statusline=2
 set smartindent
 set noswapfile
-set hlsearch
-set incsearch
 syntax on

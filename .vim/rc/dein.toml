@@ -1,84 +1,11 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # git clone 後、実行すべきコマンドがある場合はこんな感じ
-repo = 'Shougo/vimproc.vim'
-hook_post_update = '''
-  if dein#util#_is_windows()
-    let cmd = 'tools\\update-dll-mingw'
-  elseif dein#util#_is_cygwin()
-    let cmd = 'make -f make_cygwin.mak'
-  elseif executable('gmake')
-    let cmd = 'gmake'
-  else
-    let cmd = 'make'
-  endif
-  let g:dein#plugin.build = cmd
-'''
-
 [[plugins]] # カラースキーマ
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
   colorscheme hybrid
   set background=dark
-'''
-
-[[plugins]] # ツリー表示機能
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-  " 不可視ファイルを表示する
-  let NERDTreeShowHidden = 1
-
-  " ツリー表示
-  map <C-n> :NERDTreeToggle<CR>
-
-  " ツリーと編集領域を移動する
-  nmap <Leader><Tab> <C-w>w
-
-  " タブ移動
-  nnoremap <C-g> gt
-
-  " タブ移動
-  nnoremap <C-t> gT
-
-  let NERDTreeWinSize=26
-'''
-
-[[plugins]] # タブページ使用時に使いやすくする
-repo = 'jistr/vim-nerdtree-tabs'
-hook_add = '''
-  " ファイルが指定されていなければNERD treeを有効にする
-  if argc() == 0
-    let g:nerdtree_tabs_open_on_console_startup = 1
-  end
-'''
-
-[[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-depends = ['vim-airline-themes']
-hook_add = '''
-    set laststatus=2
-    set showtabline=2 " 常にタブラインを表示
-    set t_Co=256 " この設定がないと色が正しく表示されない
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#buffer_idx_mode = 1
-    let g:airline_theme='papercolor'  "落ち着いた色調が好き
-    "let g:airline_powerline_fonts = 1 " Powerline系フォントを利用する
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
-repo = 'geoffharcourt/one-dark.vim'
-hook_add = '''
-    let g:airline_theme='onedark'
 '''
 
 [[plugins]]
@@ -99,40 +26,6 @@ repo = 'bronson/vim-trailing-whitespace'
 [[plugins]] # インデントの深さを視覚的に分かりやすく
 repo = 'Yggdroot/indentLine'
 
-[[plugins]] # ファイル検索機能
-repo = 'ctrlpvim/ctrlp.vim'
-hook_add = '''
-    " 検索モードを開く
-    nmap <Leader>f :CtrlP<CR>
-'''
-
-[[plugins]] # 検索
-repo = 'thinca/vim-visualstar'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-    " エディタの分割方向を設定する
-    set splitbelow
-    set splitright
-'''
-
-[[plugins]]
-repo = 'tyru/caw.vim'
-hook_add = '''
-    " コメントの追加・削除を行なう
-    nmap <Leader>/ <Plug>(caw:zeropos:toggle)
-    vmap <Leader>/ <Plug>(caw:zeropos:toggle)
-'''
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-    " カーソル下のURLや単語をブラウザで開く
-    nmap <Leader>b <Plug>(openbrowser-smart-search)
-    vmap <Leader>b <Plug>(openbrowser-smart-search)
-'''
-
 [[plugins]]
 repo = 'rhysd/accelerated-jk'
 hook_add = '''
@@ -147,13 +40,6 @@ repo = 'edkolev/tmuxline.vim'
 #    " カラースキーマを生成する
 #    :TmuxlineSnapshot! ~/.dotfiles/tmuxline.conf
 #'''
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = '''
-    " ブランチ情報を表示する
-    let g:airline#extensions#branch#enabled = 1
-'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
@@ -252,30 +138,3 @@ hook_add = '''
 [[plugins]] # ログをカラー出力
 repo = 'vim-scripts/ansiesc.vim'
 
-
-########################################################
-### memo
-########################################################
-### 基本は github.com のレポジトリーを指定するだけ
-#[[plugins]]
-#repo = 'Shougo/dein.vim'
-#
-# ブランチやタグを指定したいとき
-#[[plugins]]
-#repo = 'delphinus35/typescript-vim'
-#rev  = 'colorize-template-strings'
-#
-## 特定の条件で読み込みたいとき
-#[[plugins]]
-#repo = 'elzr/vim-json'
-#if   = '''! has('kaoriya')'''
-#
-## 依存関係を指定したいとき
-#[[plugins]]
-#repo    = 'vim-airline/vim-airline'
-#depends = ['vim-airline-themes']
-#
-## 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
-#
