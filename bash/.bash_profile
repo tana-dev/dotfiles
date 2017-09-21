@@ -17,4 +17,5 @@ alias v='vim .'
 
 PATH=$HOME/.local/bin:$HOME/bin:/usr/local:/usr/local/bin:$PATH
 
+export LESSCHARSET=utf-8
 export PATH
