@@ -1,6 +1,7 @@
-colorscheme desert
+colorscheme koehler
 syntax on
 
+"" 文字コード
 set encoding=utf-8
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
@@ -8,15 +9,6 @@ set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先�
 set ambiwidth=double " □や○文字が崩れる問題を解決
 
 set laststatus=2
-
-"""""""""""""""""""""""""""""""""""""""""""""""
-"" insert mode
-"""""""""""""""""""""""""""""""""""""""""""""""
-"" insert時に Ctr + e で文末、 Ctr + a で文頭に
-:map! <C-e> <Esc>$a
-:map! <C-a> <Esc>^a
-:map <C-e> <Esc>$a
-:map <C-a> <Esc>^a
 
 "" バックスペースで削除
 set backspace=indent,eol,start
@@ -55,14 +47,21 @@ function Setnumber()
 endfunction
 nnoremap <silent> <C-m> :call Setnumber()<CR>
 
-" netrwは常にtree view
+"" netrwは常にtree view
 let g:netrw_liststyle = 3
 
-" タブ移動
+"" タブ移動
 nnoremap <C-g> gt
 
-" タブ移動
+"" タブ移動
 nnoremap <C-t> gT
+
+"" 文末の空白をハイライト
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "" phpとか諸々補完設定
@@ -70,13 +69,13 @@ nnoremap <C-t> gT
 "" 1. ディレクトリ作成
 "" mkdir ~/.vim/plugin
 "" mkdir ~/.vim/dict
-"" 
+""
 "" 2. 下記リンクからacp.vimをもってきて~/.vim/plugin/以下に配置
 "" https://github.com/vim-scripts/AutoComplPop
-"" 
+""
 "" 3. 下記を実行し辞書作成
 "" php -r '$f=get_defined_functions();echo join("\n",$f["internal"]);'|sort > ~/.vim/dict/php.dict
-autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict 
+autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
 
 "" 補完時の色
 highlight Pmenu ctermbg=4
