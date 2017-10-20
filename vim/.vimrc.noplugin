@@ -1,5 +1,7 @@
 colorscheme koehler
 syntax on
+set wildmenu wildmode=list:full
+set clipboard=unnamed
 
 "" 文字コード
 set encoding=utf-8
