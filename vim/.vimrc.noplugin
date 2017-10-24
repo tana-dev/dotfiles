@@ -74,6 +74,8 @@ augroup END
 ""
 "" 2. 下記リンクからacp.vimをもってきて~/.vim/plugin/以下に配置
 "" https://github.com/vim-scripts/AutoComplPop
+"" $ cd ~/.vim/plugin/
+"" $ git clone https://github.com/vim-scripts/AutoComplPop.git
 ""
 "" 3. 下記を実行し辞書作成
 "" php -r '$f=get_defined_functions();echo join("\n",$f["internal"]);'|sort > ~/.vim/dict/php.dict
