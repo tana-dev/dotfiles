@@ -1,9 +1,5 @@
 # 導入
 ## install.sh
-$ mkdir -p ~/Github
-
-$ cd ~/Github
-
 $ git clone https://github.com/tana-dev/dotfiles.git
 
 $ cd dotfiles
