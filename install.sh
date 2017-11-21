@@ -7,11 +7,11 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 
 # vim plugin
 cd ~/.vim/plugin/
-if [! -e ~/.vim/plugin/AutoComplPop]; then
+if [ ! -e ~/.vim/plugin/AutoComplPop ]; then
     git clone https://github.com/vim-scripts/AutoComplPop.git
 fi
 cd ~/.vim/colors/
-if [! -e ~/.vim/plugin/molokai]; then
+if [ ! -e ~/.vim/plugin/molokai ]; then
     git clone https://github.com/tomasr/molokai.git
 fi
 
