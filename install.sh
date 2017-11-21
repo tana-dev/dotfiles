@@ -1,9 +1,17 @@
+# backup files
+cp ./.vimrc ~/.vimrc.bk
+cp ./.tmux.conf ~/.tmux.conf.bk
+cp ./.gitconfig ~/.gitconfig.bk
+
 # set files
+cp ./vim/.vimrc.noplugin ~/.vimrc
+cp ./tmux/.tmux.conf ~/.tmux.conf
+cp ./git/.gitconfig ~/.gitconfig
+
+# make dir
 mkdir -p ~/.vim/plugin/
 mkdir -p ~/.vim/dict/
 mkdir -p ~/.vim/colors/
-cp ./vim/.vimrc.noplugin ~/.vimrc
-cp ./tmux/.tmux.conf ~/.tmux.conf
 
 # vim plugin
 cd ~/.vim/plugin/
