@@ -8,7 +8,7 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 # vim plugin
 cd ~/.vim/plugin/
 git clone https://github.com/vim-scripts/AutoComplPop.git
-cd ~/.vim/colors
+cd ~/.vim/colors/
 git clone https://github.com/tomasr/molokai.git
 
 # php dictionary
