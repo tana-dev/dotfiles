@@ -1,9 +1,5 @@
-# backup files
-cp ./.vimrc ~/.vimrc.bk
-cp ./.tmux.conf ~/.tmux.conf.bk
-cp ./.gitconfig ~/.gitconfig.bk
-
 # set files
+cp ./bash/.bash_profile ~/.bash_profile
 cp ./vim/.vimrc.noplugin ~/.vimrc
 cp ./tmux/.tmux.conf ~/.tmux.conf
 cp ./git/.gitconfig ~/.gitconfig
