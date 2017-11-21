@@ -1,7 +1,7 @@
 # set files
-mkdir -p ~/.vim/plugin
-mkdir -p ~/.vim/dict
-mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/plugin/
+mkdir -p ~/.vim/dict/
+mkdir -p ~/.vim/colors/
 cp ./vim/.vimrc.noplugin ~/.vimrc
 cp ./tmux/.tmux.conf ~/.tmux.conf
 
