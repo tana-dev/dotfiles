@@ -1,4 +1,5 @@
-colorscheme koehler
+colorscheme desert
+""colorscheme molokai
 syntax on
 set wildmenu wildmode=list:full
 set clipboard=unnamed
@@ -18,7 +19,7 @@ set laststatus=2
 set backspace=indent,eol,start
 
 "" tab設定
-set expandtab
+""set expandtab
 set tabstop=4
 set shiftwidth=4
 

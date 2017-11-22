@@ -8,15 +8,17 @@ cp ./git/.gitconfig ~/.gitconfig
 mkdir -p ~/.vim/plugin/
 mkdir -p ~/.vim/dict/
 mkdir -p ~/.vim/colors/
+mkdir -p ~/vim_colors/
 
 # vim plugin
 cd ~/.vim/plugin/
 if [ ! -e ~/.vim/plugin/AutoComplPop ]; then
-    git clone https://github.com/vim-scripts/AutoComplPop.git
+	git clone https://github.com/vim-scripts/AutoComplPop.git
 fi
-cd ~/.vim/colors/
-if [ ! -e ~/.vim/colors/molokai ]; then
-    git clone https://github.com/tomasr/molokai.git
+cd ~/vim_colors/
+if [ ! -e ~/.vim/colors/molokai.vim ]; then
+	git clone https://github.com/tomasr/molokai.git
+	mv molokai/colors/molokai.vim ~/.vim/colors/
 fi
 
 # php dictionary
