@@ -3,6 +3,7 @@
 	smudge = git-lfs smudge %f
 	required = true
 [user]
-	name = S.T.
+	name = S.T
+	mail = tanakashunichi@example.com
 [core]
 	editor = vim -c \"set fenc=utf-8\"
