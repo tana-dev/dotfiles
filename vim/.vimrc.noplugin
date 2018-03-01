@@ -1,5 +1,4 @@
 colorscheme desert
-""colorscheme molokai
 syntax on
 set wildmenu wildmode=list:full
 set clipboard=unnamed
@@ -93,3 +92,7 @@ autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else
 
 "" 補完時のエラー対応
 setlocal omnifunc=syntaxcomplete#Complete
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+
