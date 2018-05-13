@@ -57,6 +57,9 @@ alias drmi='docker rmi $(docker images --quiet)'
 alias dclean='docker kill $(docker ps --all --quiet); drm; drmi;'
 
 # List all aliases relating to docker
+alias dcom='docker-compose'
+
+# List all aliases relating to docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)='\(.*\)'/\1    => \2/"| sed "s/'\\\'//g"; }
 
 # ------------------------------------
