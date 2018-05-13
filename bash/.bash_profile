@@ -9,17 +9,16 @@ fi
 HISTFILESIZE=100000
 HISTSIZE=100000
 
-# Alias
-alias ssh="ssh -A"
-alias ll='ls -l'
-alias la='ls -la'
-alias v='vim .'
-alias c="grep \"Host \" ~/.ssh/config | grep -v \"\*\""
-alias bp='vi ~/.bash_profile'
-alias br='vi ~/.bashrc'
+# Path
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/bin
+PATH=$PATH:/usr/local
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/scala/bin
+PATH=$PATH:/usr/local/go/bin
 
-PATH=$HOME/.local/bin:$HOME/bin:/usr/local:/usr/local/bin:$PATH
-
+# Export
 export PS1="[\u@\h \W]\\$ "
 export LESSCHARSET=utf-8
 export PATH
+
