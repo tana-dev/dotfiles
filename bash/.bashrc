@@ -15,10 +15,17 @@ alias mvim='open -a MacVim'
 alias c="grep \"Host \" ~/.ssh/config | grep -v \"\*\""
 alias bp='vi ~/.bash_profile'
 alias br='vi ~/.bashrc'
+alias relogin='exec $SHELL -l'
 
 # ------------------------------------
 # Docker aliases
 # ------------------------------------
+
+# docker
+alias d="docker"
+
+# docker-compose
+alias dcom='docker-compose'
 
 # Get the latest container ID
 alias dl="docker ps --latest --quiet"
@@ -56,8 +63,6 @@ alias drmi='docker rmi $(docker images --quiet)'
 # Remove all containers and images by force
 alias dclean='docker kill $(docker ps --all --quiet); drm; drmi;'
 
-# List all aliases relating to docker
-alias dcom='docker-compose'
 
 # List all aliases relating to docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)='\(.*\)'/\1    => \2/"| sed "s/'\\\'//g"; }
@@ -90,7 +95,7 @@ if [ "$(uname)" = 'Darwin' ]; then
     export LSCOLORS=xbfxcxdxbxegedabagacad
     alias ls='ls -G'
 else
-    eval `dircolors ~/.colorrc`
+#    eval `dircolors ~/.colorrc`
     alias ls='ls --color=auto'
 fi
 
