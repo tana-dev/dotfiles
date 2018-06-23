@@ -28,4 +28,4 @@ PATH=$PATH:$RBENV_ROOT/bin
 #export PS1="[\u@\h \W]\\$ "
 export PS1="\[\e[36;40m\][\u@\h \W]\\$ \[\e[m\]"
 export LESSCHARSET=utf-8
-export $PATH
+export PATH

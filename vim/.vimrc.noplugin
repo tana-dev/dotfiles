@@ -1,7 +1,7 @@
 colorscheme desert
 syntax on
 set wildmenu wildmode=list:full
-set clipboard=unnamed
+set clipboard=unnamed,autoselect
 set noswapfile
 set nobackup
 
