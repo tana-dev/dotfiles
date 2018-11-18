@@ -1,5 +1,4 @@
 colorscheme desert
-
 syntax on
 set wildmenu wildmode=list:full
 set clipboard=unnamed,autoselect
@@ -15,10 +14,10 @@ set ambiwidth=double " □や○文字が崩れる問題を解決
 
 set laststatus=2
 
-"" delete Backspace
+"" バックスペースで削除
 set backspace=indent,eol,start
 
-"" setting Tab
+"" tab設定
 ""set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -74,7 +73,32 @@ nnoremap ]q :cnext<CR>       " 次へ
 nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
-"" check syntax for php
+"""""""""""""""""""""""""""""""""""""""""""""""
+"" phpとか諸々補完設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+"" 1. ディレクトリ作成
+"" mkdir ~/.vim/plugin
+"" mkdir ~/.vim/dict
+""
+"" 2. 下記リンクからacp.vimをもってきて~/.vim/plugin/以下に配置
+"" https://github.com/vim-scripts/AutoComplPop
+""
+"" 3. 下記を実行し辞書作成
+"" php -r '$f=get_defined_functions();echo join("\n",$f["internal"]);'|sort > ~/.vim/dict/php.dict
+autocmd FileType php,ctp :set dictionary=~/.vim/dict/php.dict
+
+"" 補完時の色
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PMenuSbar ctermbg=4
+
+"" php構文チェック
 autocmd FileType php set makeprg=php\ -l\ %
 autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+
+"" 補完時のエラー対応
+setlocal omnifunc=syntaxcomplete#Complete
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
