@@ -55,12 +55,6 @@ nnoremap <silent> <C-m> :call Setnumber()<CR>
 "" netrwは常にtree view
 let g:netrw_liststyle = 3
 
-"" タブ移動
-nnoremap <C-g> gt
-
-"" タブ移動
-nnoremap <C-t> gT
-
 "" 文末の空白をハイライト
 augroup HighlightTrailingSpaces
   autocmd!
@@ -77,4 +71,34 @@ nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 "" check syntax for php
 autocmd FileType php set makeprg=php\ -l\ %
 autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+
+"" タブ移動
+nnoremap <C-g> gt
+
+"" タブ移動
+nnoremap <C-t> gT
+
+" The prefix key.
+nnoremap    [Tag]   <Nop>
+nmap      t [Tag]
+
+" Tab jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+"" move tab pages
+nnoremap <C-g> gt
+
+"" back move tab pages
+nnoremap <C-t> gT
+
+" Hight Light Active Line
+:hi TabLineSel ctermfg=Red
+
+" Back Ground Line
+":hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+
+" Not active Line
+":hi TabLine ctermfg=Blue ctermbg=Yellow
 
