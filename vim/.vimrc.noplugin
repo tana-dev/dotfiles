@@ -30,10 +30,6 @@ set smartindent
 "" 選択した部分を検索
 vnoremap * "zy:let @/ = @z<CR>n
 
-"" php構文チェック
-autocmd FileType php set makeprg=php\ -l\ %
-autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
-
 "" 検索に関すること
 set ignorecase
 set smartcase
@@ -69,8 +65,18 @@ nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 "" check syntax for php
-autocmd FileType php set makeprg=php\ -l\ %
-autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+augroup PHP
+  autocmd!
+  autocmd FileType php set makeprg=php\ -l\ %
+  autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
+augroup END
+
+"" check syntax for golang
+augroup GOLANG
+  autocmd!
+  autocmd FileType go set makeprg=go\ fmt\ %
+  autocmd BufWritePost *.go silent make | let golang_dict = getqflist() | if len(golang_dict) == 0 | cclose | elseif len(getqflist()) != 0 && golang_dict[0]['text'] == expand('%') | :set autoread | cclose | else | copen | endif
+augroup END
 
 "" タブ移動
 nnoremap <C-g> gt
