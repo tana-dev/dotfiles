@@ -6,38 +6,41 @@ set clipboard=unnamed,autoselect
 set noswapfile
 set nobackup
 
-"" 文字コード
+"" Character code setting
 set encoding=utf-8
-set fileencoding=utf-8 " 保存時の文字コード
+set fileencoding=utf-8                        " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
-set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる問題を解決
+set fileformats=unix,dos,mac                  " 改行コードの自動判別. 左側が優先される
+set ambiwidth=double                          " □や○文字が崩れる問題を解決
 
-set laststatus=2
+"" Statusline
+set laststatus=2                       " ステータスラインを常に表示
+set statusline+=%F                     " ファイル名表示
+set statusline+=%=                     " これ以降は右寄せ表示
+set statusline+=[ENC=%{&fileencoding}] " file encoding
+set statusline+=[LOW=%l/%L]            " 現在行数/全行数
 
-"" delete Backspace
+"" Delete Backspace
 set backspace=indent,eol,start
 
-"" setting Tab
-""set expandtab
+"" Tab setting
+"set expandtab
 set tabstop=4
 set shiftwidth=4
 
-"" オートインデント
+"" Autoindent
 set autoindent
 set smartindent
 
-"" 選択した部分を検索
-vnoremap * "zy:let @/ = @z<CR>n
-
-"" 検索に関すること
+"" About search
+vnoremap * "zy:let @/ = @z<CR>n " 選択した部分を検索
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-"" number
+"" Number
 set number
 function Setnumber()
   if &number
@@ -48,8 +51,8 @@ function Setnumber()
 endfunction
 nnoremap <silent> <C-m> :call Setnumber()<CR>
 
-"" netrwは常にtree view
-let g:netrw_liststyle = 3
+"" Netrw
+let g:netrw_liststyle = 3 " netrwは常にtree view
 
 "" 文末の空白をハイライト
 augroup HighlightTrailingSpaces
@@ -58,45 +61,37 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
-"" vimgrep
+"" Vimgrep
 nnoremap [q :cprevious<CR>   " 前へ
 nnoremap ]q :cnext<CR>       " 次へ
 nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
-"" check syntax for php
+"" Check syntax for php
 augroup PHP
   autocmd!
   autocmd FileType php set makeprg=php\ -l\ %
   autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
 augroup END
 
-"" check syntax for golang
+"" Check syntax for golang
 augroup GOLANG
   autocmd!
   autocmd FileType go set makeprg=go\ fmt\ %
-  autocmd BufWritePost *.go silent make | let golang_dict = getqflist() | if len(golang_dict) == 0 | cclose | elseif len(getqflist()) != 0 && golang_dict[0]['text'] == expand('%') | :set autoread | cclose | else | copen | endif
+  autocmd BufWritePost *.go silent make | let golang_dict = getqflist() | if len(golang_dict) == 0 | cclose | elseif len(golang_dict) != 0 && golang_dict[0]['text'] == expand('%:t') | set autoread | cclose | else | copen | endif
 augroup END
 
-"" タブ移動
-nnoremap <C-g> gt
-
-"" タブ移動
-nnoremap <C-t> gT
+" Tab page jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
 
 " The prefix key.
 nnoremap    [Tag]   <Nop>
 nmap      t [Tag]
 
-" Tab jump
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-
-"" move tab pages
+"" Move tab pages
 nnoremap <C-g> gt
-
-"" back move tab pages
 nnoremap <C-t> gT
 
 " Hight Light Active Line
@@ -107,4 +102,3 @@ nnoremap <C-t> gT
 
 " Not active Line
 ":hi TabLine ctermfg=Blue ctermbg=Yellow
-
