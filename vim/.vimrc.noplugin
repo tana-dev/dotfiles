@@ -102,3 +102,12 @@ nnoremap <C-t> gT
 
 " Not active Line
 ":hi TabLine ctermfg=Blue ctermbg=Yellow
+
+"" 補完系
+" オムニ補完の設定（insertモードでCtrl+oで候補を出す、Ctrl+n Ctrl+pで選択、Ctrl+yで確定）
+set omnifunc=pythoncomplete#Complete
+set omnifunc=javascriptcomplete#CompleteJS
+set omnifunc=htmlcomplete#CompleteTags
+set omnifunc=csscomplete#CompleteCSS
+set omnifunc=xmlcomplete#CompleteTags
+set omnifunc=phpcomplete#CompletePHP
