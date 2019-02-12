@@ -78,7 +78,7 @@ augroup END
 augroup GOLANG
   autocmd!
   autocmd FileType go set makeprg=go\ fmt\ %
-  autocmd BufWritePost *.go silent make | let golang_dict = getqflist() | if len(golang_dict) == 0 | cclose | elseif len(golang_dict) != 0 && golang_dict[0]['text'] == expand('%:t') | set autoread | cclose | else | copen | endif
+  autocmd BufWritePost *.go silent make | let golang_dict = getqflist() | if len(golang_dict) == 0 | cclose | elseif len(golang_dict) != 0 && len(matchlist(golang_dict[0]['text'], expand('%:t').'$')) != 0 | set autoread | cclose | else | copen | endif
 augroup END
 
 " Tab page jump
