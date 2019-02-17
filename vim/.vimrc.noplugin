@@ -81,12 +81,12 @@ augroup GOLANG
   autocmd BufWritePost *.go silent make | let golang_dict = getqflist() | if len(golang_dict) == 0 | cclose | elseif len(golang_dict) != 0 && len(matchlist(golang_dict[0]['text'], expand('%:t').'$')) != 0 | set autoread | cclose | else | copen | endif
 augroup END
 
-" Tab page jump
+"" Tab page jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-" The prefix key.
+"" The prefix key.
 nnoremap    [Tag]   <Nop>
 nmap      t [Tag]
 
@@ -97,11 +97,11 @@ nnoremap <C-t> gT
 " Hight Light Active Line
 :hi TabLineSel ctermfg=Red
 
-" Back Ground Line
-":hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-
-" Not active Line
-":hi TabLine ctermfg=Blue ctermbg=Yellow
+"" Undofile
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
 
 "" 補完系
 " オムニ補完の設定（insertモードでCtrl+oで候補を出す、Ctrl+n Ctrl+pで選択、Ctrl+yで確定）
