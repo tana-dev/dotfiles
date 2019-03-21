@@ -15,6 +15,9 @@ if [ -e $RBENV_ROOT ]; then
 	eval "$(rbenv init -)"
 fi
 
+export GOPATH=$HOME/Go
+export GOBIN=$GOPATH/bin
+
 # Path
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/bin
@@ -23,6 +26,9 @@ PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/scala/bin
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$RBENV_ROOT/bin
+
+HISTCONTROL=ignoreboth
+HISTIGNORE="fg*:bg*:history*"
 
 # Export
 #export PS1="[\u@\h \W]\\$ "
