@@ -1,45 +1,12 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # カラースキーマ
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
-  colorscheme hybrid
-  set background=dark
-'''
-
 [[plugins]]
-repo = 'rakr/vim-one'
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
 hook_add = '''
-    set background=light        " for the light version
-    let g:one_allow_italics = 1 " I love italic for comments
-    colorscheme one
+    let g:deoplete#enable_at_startup = 1
 '''
-
-[[plugins]] # 末尾スペースをハイライト
-repo = 'bronson/vim-trailing-whitespace'
-#hook_add = '''
-#    " ファイル保存時に余分なスペースを削除する
-#    autocmd BufWritePre * :FixWhitespace
-#'''
-
-[[plugins]] # インデントの深さを視覚的に分かりやすく
-repo = 'Yggdroot/indentLine'
-
-[[plugins]]
-repo = 'rhysd/accelerated-jk'
-hook_add = '''
-    " j/kによる移動を速くする
-    nmap j <Plug>(accelerated_jk_gj)
-    nmap k <Plug>(accelerated_jk_gk)
-'''
-
-[[plugins]]
-repo = 'edkolev/tmuxline.vim'
-#hook_add = '''
-#    " カラースキーマを生成する
-#    :TmuxlineSnapshot! ~/.dotfiles/tmuxline.conf
-#'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'

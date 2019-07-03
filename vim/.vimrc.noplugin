@@ -43,17 +43,9 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "" Number
 set number
-function Setnumber()
-  if &number
-    setlocal nonumber
-  else
-    setlocal number
-  endif
-endfunction
-nnoremap <silent> <C-m> :call Setnumber()<CR>
 
 "" Netrw
-let g:netrw_liststyle = 3 " netrwは常にtree view
+""let g:netrw_liststyle = 3 " netrwは常にtree view
 
 "" 文末の空白をハイライト
 augroup HighlightTrailingSpaces
@@ -98,6 +90,7 @@ if has('persistent_undo')
 endif
 
 "" 補完系
+filetype plugin on
 " オムニ補完の設定（insertモードでCtrl+oで候補を出す、Ctrl+n Ctrl+pで選択、Ctrl+yで確定）
 set omnifunc=pythoncomplete#Complete
 set omnifunc=javascriptcomplete#CompleteJS
