@@ -87,21 +87,3 @@ hook_add = '''
     let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 '''
 
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]] # コメントアウト
-repo = 'tomtom/tcomment_vim'
-
-[[plugins]] # カラースキーマを適応しても透明にする
-repo = 'miyakogi/seiya.vim'
-hook_add = '''
-  let g:seiya_auto_enable=1
-'''
-
-[[plugins]] # ログをカラー出力
-repo = 'vim-scripts/ansiesc.vim'
-
