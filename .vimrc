@@ -45,9 +45,6 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 "" Number
 set number
 
-"" Netrw
-""let g:netrw_liststyle = 3 " netrwは常にtree view
-
 "" 文末の空白をハイライト
 augroup HighlightTrailingSpaces
   autocmd!

@@ -31,8 +31,6 @@ HISTCONTROL=ignoreboth
 HISTIGNORE="fg*:bg*:history*"
 
 # Export
-#export PS1="[\u@\h \W]\\$ "
-#export PS1="\[\e[36;40m\][\u@\h \W]\\$ \[\e[m\]"
-export PS1='\033[01;34m[\u@@\h \W]\$\033[00m '
+export PS1='\[\ek\e\\\][\u@\h \W]\$ '
 export LESSCHARSET=utf-8
 export PATH
