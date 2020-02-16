@@ -15,7 +15,7 @@ if [ -e $RBENV_ROOT ]; then
 	eval "$(rbenv init -)"
 fi
 
-export GOPATH=$HOME/Go
+export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 
 # Path
