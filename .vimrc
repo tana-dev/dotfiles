@@ -89,6 +89,7 @@ endif
 
 "" 補完系
 filetype plugin on
+
 " オムニ補完の設定（insertモードでCtrl+oで候補を出す、Ctrl+n Ctrl+pで選択、Ctrl+yで確定）
 set omnifunc=pythoncomplete#Complete
 set omnifunc=javascriptcomplete#CompleteJS
