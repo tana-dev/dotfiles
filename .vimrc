@@ -89,6 +89,8 @@ endif
 
 "" 補完系
 filetype plugin on
+imap <C-f> <C-x><C-o>
+imap <C-d> <C-x><C-i>
 
 " オムニ補完の設定（insertモードでCtrl+oで候補を出す、Ctrl+n Ctrl+pで選択、Ctrl+yで確定）
 set omnifunc=pythoncomplete#Complete
