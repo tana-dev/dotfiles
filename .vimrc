@@ -99,3 +99,10 @@ set omnifunc=htmlcomplete#CompleteTags
 set omnifunc=csscomplete#CompleteCSS
 set omnifunc=xmlcomplete#CompleteTags
 set omnifunc=phpcomplete#CompletePHP
+
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go'
+Plug 'othree/vim-autocomplpop'
+Plug 'vim-scripts/L9'
+call plug#end()
+
