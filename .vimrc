@@ -1,6 +1,7 @@
 "" vim 8.0
 colorscheme elflord
 "colorscheme desert
+"colorscheme morning
 
 syntax on
 set wildmenu wildmode=list:full
@@ -100,9 +101,9 @@ set omnifunc=csscomplete#CompleteCSS
 set omnifunc=xmlcomplete#CompleteTags
 set omnifunc=phpcomplete#CompletePHP
 
+" vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
 Plug 'othree/vim-autocomplpop'
 Plug 'vim-scripts/L9'
 call plug#end()
-

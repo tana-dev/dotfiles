@@ -6,20 +6,17 @@ $ cd dotfiles
 $ ./install.sh
 ```
 
-# macbook setup
-## app
-* chrome
-* iterm
+# vim-plug
+## vim-plugインストール
+```
+$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+https://github.com/junegunn/vim-plug
 
-## app
-* mouse locator
-* shiftlt
-* chrome
-* iterm
-* firefox
-* docker
-* macvim
-
-# chrome adon
-* lastpass
-* vimium
+## vim-plugコマンド一覧
+```
+:PlugInstall
+:PlugClean
+:PlugUpdate
+```
